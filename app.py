@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 
 
-FILE_PATH = 'result_file.txt'
+FILE_PATH = 'tmp/result_file.txt'
 
 @app.route("/")
 def home():
@@ -61,7 +61,7 @@ def submit_data():
     iterations = random.randint(15, 30)
 
     input_file_name = "output_molecules.txt"
-    output_file_name = "result_file.txt"
+    output_file_name = "tmp/result_file.txt"
 
     with open(input_file_name, 'r') as file:
         lines = file.readlines()
