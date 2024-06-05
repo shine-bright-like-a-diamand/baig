@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title> BAIG </title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="sub-header">
+  <nav>
+    <a href="index.html"><img src="../static/images/BAIG.svg"></a>
+    <div class="nav-links" id="navLinks">
+      <i class="fa fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="">HOME</a> </li>
+        <li><a href="">ABOUT</a> </li>
+        <li><a href="">TEAM</a> </li>
+        <li><a href="">GENERATE</a> </li>
+        <li><a href="">CONTACTS</a> </li>
+      </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </nav>
+  <h1>About Us</h1>
+</section>
+
+<section class="generate">
+  <div class="container">
+    <div class="row">
+      <div class="generate__title section-title col_lg-8 col_md-10 col_sm-8 col_xs-10">
+        Generate
+      </div>
+    </div>
+    <div class="row">
+      <div class="generate__text col_lg-8 col_md-10 col_sm-10 col_xs-10">
+        <p>Here you can use the results of our work. To generate are required:</p>
+        <ul>
+          <li>128 numbers (representation of a molecule in a latent space);</li>
+          <li>the energy value.</li>
+        </ul>
+        <p>
+          You can <a [href]="fileUrl" download="latent-space.csv">download a csv-file</a> with a description of the
+          hidden space for composing input data or generate input data randomly by selecting the desired distribution.
+          See <a [href]="exampleFileUrl" download="input-example.txt">input file example</a>.
+        </p>
+        <p>
+          At the output you will get a string - a potential SMILES molecule that describes a new ligand against acute
+          myeloid leukemia.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="generate__form col_lg-8 col_md-10 col_sm-10 col_xs-10">
+        <div class="generate-container">
+          <div class="switch-buttons">
+            <button class="upload-button" [ngClass]="{active: fileUpload}" (click)="toggle($event)">Upload file</button>
+            <button class="generate-button" [ngClass]="{active: !fileUpload}" (click)="toggle($event)">Generate
+              randomly</button>
+          </div>
+          <form class="form form-upload">
+            <div class="file-processing">
+              <label class="input-file">
+                <input type="file" name="file" accept="text/*" (change)="onFileSelected($event)">
+                <span class="input-file-field">{{fileName}}</span>
+              </label>
+              <div class="progress-label">
+                <span class="progress-label__title">Progress:</span>
+                <span class="progress-label__status">{{currentStatus}}</span>
+              </div>
+            </div>
+            <div class="control-buttons">
+              <button type="button" class="control-button" [disabled]="!generationAvailable" (click)="startGenerating()">Start
+                generating</button>
+              <a [href]="fileUrl" download="generation-result.txt">
+                <button type="button" class="control-button" [disabled]="!downloadAvailable"
+                        (click)="download()">Download</button>
+              </a>
+            </div>
+          </form>
+          <form class="form form-select" [formGroup]="form">
+            <div class="file-processing">
+              <select class="select-distribution" #options (change)="onSelected(options.value)" formControlName="distType">
+                <option disabled selected>Select distribution</option>
+                <option value="normal">Normal distribution</option>
+                <option value="continuous">Continuous uniform distribution</option>
+                <option value="beta">Beta distribution</option>
+              </select>
+              <div class="input-energy">
+                <label>Binding energy: </label>
+                <input class="input-energy__field" type="number" formControlName="energyValue">
+                <div *ngIf="energyValue!.invalid && (energyValue!.touched || energyValue!.dirty)" class="form__error">
+                  <span *ngIf="energyValue!.errors?.['required']" class="error__text">The field is required</span>
+                  <span *ngIf="energyValue!.errors?.['min']" class="error__text">Min value is -14</span>
+                  <span *ngIf="energyValue!.errors?.['max']" class="error__text">Max value is -10</span>
+                </div>
+              </div>
+              <div class="progress-label">
+                <span class="progress-label__title">Progress:</span>
+                <span class="progress-label__status">{{currentStatus}}</span>
+              </div>
+            </div>
+            <div class="control-buttons">
+              <button class="control-button" type="button" [disabled]="form.invalid && generationAvailable" (click)="generate()">Start
+                generating</button>
+              <a [href]="inputFileUrl" download="input.txt">
+                <button class="control-button" type="button" [disabled]="!downloadInputAvailable"
+                        (click)="downloadInput()">Download
+                  input</button>
+              </a>
+              <a [href]="resultFileUrl" download="generation-result.txt">
+                <button class="control-button" type="button" [disabled]="!downloadAvailable"
+                        (click)="downloadResult()">Download</button>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--ыьер-->
+<section class="developed-by">
+  <div class="container">
+    <div class="row">
+      <div class="developed-by__container col_lg-12 col_md-12 col_sm-12 col_xs-12">
+        <div>Developed by</div>
+        <a href="https://bsu.by/" target="_blank">
+          <img src="../static/images/bsu-logo.jpg" alt="Logo of BSU">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--footer-->
+<section class="footer">
+  <h4>About US</h4>
+  <p>nkdvtygkbsdnxthjwknesjtrdhgevknjdrhkgjhgvkjdeigtkjdgfm</p>
+  <div class="icons">
+    <i class="fa fa-facebook"></i>
+    <i class="fa fa-linkedin"></i>
+    <i class="fa fa-facebook"></i>
+    <i class="fa fa-facebook"></i>
+  </div>
+</section>
+
+
+
+
+<script>
+  var navLinks = document.getElementById("navLinks");
+  function showMenu() {
+    navLinks.style.right = "0";
+  }
+  function hideMenu() {
+    navLinks.style.right = "-200px";
+  }
+</script>
+</body>
+</html>
+

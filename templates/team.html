@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title> BAIG </title>
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="sub-header">
+       <nav>
+                <a href="{{ url_for('home') }}"><h1>BAIG</h1></a>
+                <div class="nav-links" id="navLinks">
+                        <i class="fa fa-times" onclick="hideMenu()"></i>
+                       <ul>
+                               <li><a href="{{ url_for('home') }}">HOME</a> </li>
+                               <li><a href="{{ url_for('about') }}">ABOUT</a> </li>
+                               <li><a href="{{ url_for('team') }}">TEAM</a> </li>
+                               <li><a href="{{ url_for('generate') }}">GENERATE</a> </li>
+                               <li><a href="{{ url_for('contact') }}">CONTACTS</a> </li>
+                       </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Our Team</h1>
+</section>
+
+<section class="team">
+        <div class="row">
+                <div class="team-col">
+                        <!--                     <img src="../images/logo.svg">-->
+                        <img src="{{ url_for('static', filename='images/hanna-photo.png') }}">
+                        <h3> Hanna Karpenko</h3>
+                        <p>PROJECT SUPERVISOR</p>
+                        <div class="layer">
+                                <div class="icons">
+                                        <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                                                <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/anna-karpenko-by/">
+                                                <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="mailto:fpm.harpenkoAD@bsu.by">
+                                                <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                                        </a>
+                                </div>
+                        </div>
+                </div>
+                <div class="team-col">
+                        <!--                     <img src="../images/logo.svg">-->
+                        <img src="{{ url_for('static', filename='images/polina-photo.jpg') }}">
+                        <h3>Polina Dobrynina </h3>
+                        <p>WEB-DEVELOPER</p>
+                        <div class="layer">
+                                <div class="icons">
+                                        <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                                                <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/polina-dobrynina-40955a224">
+                                                <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="mailto:fpm.dobryninPV@bsu.by">
+                                                <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                                        </a>
+                                </div>
+                        </div>
+                </div>
+                <div class="team-col">
+                        <img src="{{ url_for('static', filename='images/polinam-photo.jpg') }}">
+                        <h3>Polina Makruseva</h3>
+                        <p>ML-DEVELOPER</p>
+                        <div class="layer">
+                                <div class="icons" style="text-decoration: none;">
+                                        <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                                                <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/polina-makruseva-584570224/">
+                                                <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                                        </a>
+                                        <a href="mailto:fpm.makrusevPA@bsu.by">
+                                                <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                                        </a>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</section>
+
+
+
+
+
+<!--ыьер-->
+<section class="developed-by">
+        <div class="container">
+                <div class="row">
+                        <div class="developed-by__container col_lg-12 col_md-12 col_sm-12 col_xs-12">
+                                <div>Developed by</div>
+                                <a href="https://bsu.by/" target="_blank">
+                                        <img src="../static/images/bsu-logo.jpg" alt="Logo of BSU">
+                                </a>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--footer-->
+<section class="footer">
+        <h1 style="color: #FFF;">BAIG </h1>
+        <div class="icons">
+                <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                        <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/polina-dobrynina-40955a224/">
+                        <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                </a>
+                <a href="mailto:fpm.dobryninPV@bsu.by">
+                        <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                </a>
+        </div>
+</section>
+
+
+
+
+<script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+                navLinks.style.right = "0";
+        }
+        function hideMenu() {
+                navLinks.style.right = "-200px";
+        }
+</script>
+</body>
+</html>

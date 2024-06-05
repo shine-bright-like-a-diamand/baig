@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title> BAIG </title>
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="sub-header">
+        <nav>
+                <a href="{{ url_for('home') }}"><h1>BAIG</h1></a>
+                <div class="nav-links" id="navLinks">
+                        <i class="fa fa-times" onclick="hideMenu()"></i>
+                       <ul>
+                               <li><a href="{{ url_for('home') }}">HOME</a> </li>
+                               <li><a href="{{ url_for('about') }}">ABOUT</a> </li>
+                               <li><a href="{{ url_for('team') }}">TEAM</a> </li>
+                               <li><a href="{{ url_for('generate') }}">GENERATE</a> </li>
+                               <li><a href="{{ url_for('contact') }}">CONTACTS</a> </li>
+                       </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Generator</h1>
+</section>
+
+
+<section class="generate">
+        <div class="row">
+                <h1>About model</h1>
+<!--                <a href="../static/images/logo.svg" download="logo.svg">Скачать документ</a>-->
+                <p>The search for inhibitors has several features. First, since our goal is to create new molecules that may not exist in the database, the problem involves unsupervised learning. Second, there is no finite set of answers, that is, only the desired properties of the finite compounds exist. Models using autoencoder architecture are well suited for solving such problems.<p>
+<p>Let us note the key features of the architecture of the specific neural network used in this work. There are three main parts used during model training: the encoder, the latent space representation of the molecule, and the decoder. Input and output molecules are presented in SMILES string format, and input data must also include molecular weight, lipophilicity, and total polar surface area (TPSA) values. When using a trained model, there are only two parts involved: the latent space representation of the data and the decoder. This means that only the molecular weight, lipophilicity and total polar surface area (TPSA) values ​​need to be entered. In latent space, a molecule is encoded with 128 numbers, each of which has a specific range. The decoder then reconstructs the molecule from the input data. The output format is SMILES strings containing descriptions of potential BCR-ABL tyrosine kinase inhibitors.<p>
+        </div>
+</section>
+<section class="gen-form">
+        <div class="row">
+                <div class="contact-col form-col">
+                        <form action="../submit_data" method="post">
+                                <input type="number" name="weight"  placeholder="Enter weight" min="0" step="0.001"required>
+                                <input type="number" name="logP" placeholder="Enter logp" step="0.001" required>
+                                <input type="number" name="tpsa" placeholder="Enter tpsa" step="0.001" required>
+                                <button type="submit" class="hero-btn red-btn">Submit</button>
+<!--                                 <a href="../static/result_out_of_range4.txt" class="hero-btn red-btn" download="result_out_of_range4.txt">Download</a>-->
+                                 {% if file_exists %}
+                                     <button class="hero-btn red-btn" onclick="window.location.href='/download'">Download</button>
+                                 {% else %}
+                                    <button style="
+                                                display: inline-block;
+                                                text-decoration: none;
+                                                border: 1px solid lightseagreen;
+                                                padding: 14px 32px;
+                                                font-size: 30px;
+                                                background: transparent;
+                                                position: relative;
+                                                cursor: pointer;
+                                " disabled>Unavailable</button>
+                                 {% endif %}
+                        </form>
+                </div>
+                <div class="contact-col links-col">
+                        <a href="https://en.wikipedia.org/wiki/Molecular_mass" style="color:lightseagreen">more about milecular weight...</a>
+                        <a href="https://en.wikipedia.org/wiki/Lipophilicity" download="logo.svg" style="color:lightseagreen">more about logp...</a>
+                        <a href="https://en.wikipedia.org/wiki/Polar_surface_area" download="logo.svg" style="color:lightseagreen">more about tpsa...</a>
+                </div>
+        </div>
+</section>
+<!--<section class="result">-->
+<!--         <a href="../static/images/logos.svg" class="hero-btn red-btn" download="logos.svg">Download</a>-->
+<!--</section>-->
+
+
+
+
+<!--ыьер-->
+<section class="developed-by">
+        <div class="container">
+                <div class="row">
+                        <div class="developed-by__container col_lg-12 col_md-12 col_sm-12 col_xs-12">
+                                <div>Developed by</div>
+                                <a href="https://bsu.by/" target="_blank">
+                                        <img src="../static/images/bsu-logo.jpg" alt="Logo of BSU">
+                                </a>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--footer-->
+<section class="footer">
+        <h1 style="color: #FFF;">BAIG </h1>
+        <div class="icons">
+                <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                        <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/polina-dobrynina-40955a224/">
+                        <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                </a>
+                <a href="mailto:fpm.dobryninPV@bsu.by">
+                        <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                </a>
+        </div>
+</section>
+
+
+
+
+<!--window.location.href='/download'-->
+<script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+                navLinks.style.right = "0";
+        }
+        function hideMenu() {
+                navLinks.style.right = "-200px";
+        }
+</script>
+</body>
+</html>

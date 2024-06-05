@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title> BAIG </title>
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="sub-header">
+        <nav>
+                <a href="{{ url_for('home') }}"><h1>BAIG</h1></a>
+                <div class="nav-links" id="navLinks">
+                        <i class="fa fa-times" onclick="hideMenu()"></i>
+                       <ul>
+                               <li><a href="{{ url_for('home') }}">HOME</a> </li>
+                               <li><a href="{{ url_for('about') }}">ABOUT</a> </li>
+                               <li><a href="{{ url_for('team') }}">TEAM</a> </li>
+                               <li><a href="{{ url_for('generate') }}">GENERATE</a> </li>
+                               <li><a href="{{ url_for('contact') }}">CONTACTS</a> </li>
+                       </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>About Us</h1>
+</section>
+<!--about content-->
+<!--<section class="about-us">-->
+<!--        <div class="row">-->
+<!--                <div class="about-col"></div>-->
+<!--                        <h1>OOOOO</h1>-->
+<!--                <p>ghdshszdgfmhnsdmgfhsngfjmhg sdhmnfgjmhdsnfgbjhmdfng bjmhdfgnvbjm-->
+<!--                dsjhmgfvkj dgfncxbvj d mnxhg-->
+<!--                jhrshnmgxfhnkvhjsdmn gbkvhjndr vb-->
+<!--                cjnyeshdmgfevshndmkvhjmdnfghbkj</p>-->
+<!--                <a href="https://www.youtube.com/watch?v=P6YQUAWJbwc&list=PLjwm_8O3suyP5kGKmwS_DM0Hs1j7fshi5&index=2" class="hero-btn red-btn">EXPLORE NOW</a>-->
+<!--                <div class="about-col">-->
+<!--                        <img src="images/BAIG.svg">-->
+<!--                </div>-->
+<!--                -->
+<!--        </div>-->
+<!--</section>-->
+
+
+<section class="about-us">
+        <div class="row">
+<!--                <h1>BCR-ABL </h1>-->
+                <div class="about-content">
+                        <div class="text-content">
+                                <p style="font-size: 20px;">Cancer is a generic term for a large group of diseases that can affect any part of the body. <br>Leukemia - Is a group of blood cancers that usually begin in the bone marrow and result in high numbers of abnormal blood cells. Unlike other cancers, leukemia generally doesn’t form into a mass (tumor) that can be seen in imaging tests, such as X-rays. There are many types of leukemia. Nowadays there are 3 main types of inhibitors, but they aren’t able to block any leukemia mutations. Main aim of our work - build-up a multi-kinase inhibitor, which will be unique for every mutation. Researchers have shown that various pyrimidine derivatives are excellent inhibitors and are currently used in the treatment of some types of leukemia. Because of it we will try to build our inhibitors based on pyrimidine derivatives.
+
+So, we want to build a generative deep learning model, which will be able to generate new ligands for leukemia. Our main goal : find new most effective multi-kinase inhibitors, which are based on pyrimidine. We have obtained more than 500,000 pyrimidine derivatives from open chemical libraries, more precisely, their properties and presentation in various formats, and after cleaning them, we had only 100,000. As inputs of our model we have chosen 2 string formats : smiles and kekule smiles, and indicative characteristics of each molecule. In output we expected only these 2 string formats, which will be calculated from one latent vector, but regardless.</p>
+                                <a href="{{ url_for('generate') }}" class="hero-btn red-btn">EXPLORE NOW</a>
+                        </div>
+                        <div class="image-content" style="width: 600px">
+                                <img src="../static/images/img_1.png" alt="Image Description" style="width: 70%">
+                        </div>
+                </div>
+        </div>
+</section>
+
+
+
+
+<!--ыьер-->
+<section class="developed-by">
+        <div class="container">
+                <div class="row">
+                        <div class="developed-by__container col_lg-12 col_md-12 col_sm-12 col_xs-12">
+                                <div>Developed by</div>
+                                <a href="https://bsu.by/" target="_blank">
+                                        <img src="../static/images/bsu-logo.jpg" alt="Logo of BSU">
+                                </a>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--footer-->
+<section class="footer">
+        <h1 style="color: #FFF;">BAIG </h1>
+        <div class="icons">
+                <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                        <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/polina-dobrynina-40955a224/">
+                        <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                </a>
+                <a href="mailto:fpm.dobryninPV@bsu.by">
+                        <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                </a>
+        </div>
+</section>
+
+
+
+
+<script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+                navLinks.style.right = "0";
+        }
+        function hideMenu() {
+                navLinks.style.right = "-200px";
+        }
+</script>
+</body>
+</html>

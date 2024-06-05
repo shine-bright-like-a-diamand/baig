@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title> BAIG </title>
+<!--        <link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="header">
+        <nav>
+                <a href="{{ url_for('home') }}"><h1>BAIG</h1></a>
+                <div class="nav-links" id="navLinks">
+                        <i class="fa fa-times" onclick="hideMenu()"></i>
+                       <ul>
+                               <li><a href="{{ url_for('home') }}">HOME</a> </li>
+                               <li><a href="{{ url_for('about') }}">ABOUT</a> </li>
+                               <li><a href="{{ url_for('team') }}">TEAM</a> </li>
+                               <li><a href="{{ url_for('generate') }}">GENERATE</a> </li>
+                               <li><a href="{{ url_for('contact') }}">CONTACTS</a> </li>
+                       </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+                <h1>BCR-ABL Inhibitor Generator</h1>
+                <p> create your own<br>inhibitor</p>
+                <a href="{{ url_for('generate') }}" class="hero-btn">generate</a>
+        </div>
+</section>
+
+ <!-------course------>
+
+<section class="course">
+      <h1>Problem</h1>
+        <p> </p>
+      <div class="row">
+           <div class="course-col">
+                   <h3>Drug Development</h3>
+                   <p style="font-size: 20px;">The process of drug development is very time-consuming and expensive. Currently, there are several types of inhibitors, but they are not able to block any mutations of leukemia. And although scientists are actively working to find a solution, at the moment the problem remains unresolved.</p>
+           </div>
+                <div class="course-col">
+                      <h3>About 1 person in 526 will get CML in their lifetime in the US. And currently there is no medicine that would effectively combat this disease.</h3>
+                      <p></p>
+                </div>
+              <div class="course-col">
+                      <h3>Statistics</h3>
+                      <p style="font-size: 20px;">Chronic myeloid leukemia is a very dangerous disease. About 15% of all leukemia is CML. The American Cancer Society’s estimates for chronic myeloid leukemia in the US for 2022 are:
+                              <br>- About 8,860 new cases will be diagnosed with CML</br>
+                              <br>- About 1,220 people will die of CML</br></p>
+              </div>
+      </div>
+</section>
+
+<hr class="rounded">
+<!--campus-->
+<section class="campus">
+        <h1>BCR-ABL</h1>
+<!--        <p>dfghjkjjhgfdghjkhgfdghjkhgf</p>-->
+        <div class="row">
+                <div class="course-col">
+<!--                   <h3>Drug Development</h3>-->
+                   <p style="font-size: 20px;">BCR-ABL is a hybrid protein, a product of the BCR-ABL1 hybrid gene, formed as a result of the erroneous attachment of a part of chromosome 9 (ABL gene) to chromosome 22 (BCR gene). The result of this abnormal process is a new gene that causes the synthesis of a new protein that leads to the formation of malignant blood cells in the bone marrow.</p>
+                </div>
+                <div class="campus-col">
+                        <img src="../static/images/logo.svg">
+                        <div class="layer">
+                                <a href="https://ru.wikipedia.org/wiki/Bcr-Abl"><h3>read more</h3></a>
+                        </div>
+                </div>
+                <div class="course-col">
+<!--                   <h3>Drug Development</h3>-->
+                   <p style="font-size: 20px;">Currently, there are three groups of major BcrAbl TC inhibitors: inhibitors of the first (imatinib), second (nilotinib, dasatinib) and third (ponatinib) generations. The first selective inhibitor of Bcr-Abl TC was imatinib..</p>
+           </div>
+        </div>
+</section>
+<hr class="rounded">
+<!--facilities-->
+<!--<section class="facilities">-->
+<!--        <h1>facilities</h1>-->
+<!--        <p> jeafhnmnbsmnbgfsndf bgvsndmbfvsd,mfv</p>-->
+<!--        <div class="row">-->
+<!--                <div class="facility-col">-->
+<!--                        <img src="../static/images/logo.svg">-->
+<!--                        <h3>world class</h3>-->
+<!--                        <p>gvhbjkjjhgvcgvhjkljhgcvhjkjhgvhjkhgvhjnbhv</p>-->
+<!--                </div>-->
+<!--                <div class="facility-col">-->
+<!--                        <img src="../static/images/logo.svg">-->
+<!--                        <h3>world class</h3>-->
+<!--                        <p>gvhbjkjjhgvcgvhjkljhgcvhjkjhgvhjkhgvhjnbhv</p>-->
+<!--                </div>-->
+<!--                <div class="facility-col">-->
+<!--                        <img src="../static/images/logo.svg">-->
+<!--                        <h3>world class</h3>-->
+<!--                        <p>gvhbjkjjhgvcgvhjkljhgcvhjkjhgvhjkhgvhjnbhv</p>-->
+<!--                </div>-->
+<!--        </div>-->
+<!--</section>-->
+<!--testimonials-->
+<section class="testimonials">
+        <h1>Articles</h1>
+        <p style="font-size:20px">more articles...</p>
+
+        <div class="row">
+                <div class="testimonials-col">
+                        <img src="../static/images/doctor1.jpg">
+                        <div>
+                                <p>An age-progressive platelet differentiation path from hematopoietic stem cells causes exacerbated thrombosis </p>
+                                <h3></h3>
+                                <a href="https://helix.ru/kb/item/18-093">
+                                        <i class="fa-solid fa-link"></i>
+                                </a>
+                        </div>
+                </div>
+                <div class="testimonials-col">
+                        <img src="../static/images/doctor2.jpeg">
+                        <div>
+                                <p>Andexanet for Factor Xa Inhibitor-Associated Acute Intracerebral Hemorrhage </p>
+                                <h3></h3>
+                                <a href="https://www.genokarta.ru/gene/BCR_ABL">
+                                        <i class="fa-solid fa-link"></i>
+                                </a>
+                        </div>
+                </div>
+                <div class="testimonials-col">
+                        <img src="../static/images/doctor3.jpg">
+                        <div>
+                                <p>ARID1A suppresses R-loop-mediated STING-type I interferon pathway activation of anti-tumor immunity </p>
+                                <h3></h3>
+                                <a href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2019.00939/full">
+                                        <i class="fa-solid fa-link"></i>
+                                </a>
+                        </div>
+                </div>
+        </div>
+</section>
+
+<!--ыьер-->
+<section class="developed-by">
+        <div class="container">
+                <div class="row">
+                        <div class="developed-by__container">
+                                <div>Developed by</div>
+                                <a href="https://bsu.by/" target="_blank">
+                                        <img src="../static/images/bsu-logo.jpg" alt="Logo of BSU">
+                                </a>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--footer-->
+<section class="footer">
+        <h1 style="color: #FFF;">BAIG </h1>
+        <div class="icons">
+                <a href="https://ru-ru.facebook.com/login/?next=https%3A%2F%2Fru-ru.facebook.com%2F">
+                        <i class="fa-brands fa-facebook" style="color: #FFF;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/polina-dobrynina-40955a224/">
+                        <i class="fa-brands fa-linkedin" style="color: #FFF;"></i>
+                </a>
+                <a href="mailto:fpm.dobryninPV@bsu.by">
+                        <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                </a>
+        </div>
+</section>
+
+
+
+
+<script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+                navLinks.style.right = "0";
+        }
+        function hideMenu() {
+                navLinks.style.right = "-200px";
+        }
+</script>
+</body>
+</html>
