@@ -9,8 +9,18 @@ import os
 
 app = Flask(__name__)
 
+# with open("models/cv.pkl", "rb") as file:
+#     cv = pickle.load(file)
+# with open("models/clf.pkl", "rb") as file:
+#     clf = pickle.load(file)
 
-FILE_PATH = 'tmp/result_file.txt'
+
+# FILE_PATH = 'result_file.txt'
+FILE_PATH = "tmp/result_file_{}_{}_{}.txt"
+
+w = 0
+l = 0
+t = 0
 
 @app.route("/")
 def home():
@@ -41,38 +51,66 @@ def file_exists():
 
 @app.route('/download')
 def download():
-    if os.path.exists(FILE_PATH):
-        return_data = send_file(FILE_PATH, as_attachment=True)
-        os.remove(FILE_PATH)
+    global w
+    print(w)
+    if os.path.exists(FILE_PATH.format(w, l, t)) and w > 0:
+        print(w)
+        file = "tmp/result_file_{}_{}_{}.txt".format(w, l, t)
+        return_data = send_file(file, as_attachment=True, download_name='result.txt')
+        w = 0
+        # os.remove(FILE_PATH)
         return return_data
     else:
+        w = 0
         return redirect(url_for('generate'))
+
+# @app.route('/submit_data', methods=['POST'])
+# def submit_data():
+#     weight = request.form['weight']
+#     log = request.form['logP']
+#     tpsa = request.form['tpsa']
+#
+#     new_weight = generate_close_number(float(weight))
+#     new_log = generate_close_number(float(log))
+#     new_tpsa = generate_close_number(float(tpsa))
+#
+#     iterations = random.randint(15, 30)
+#
+#     input_file_name = "output_molecules.txt"
+#     output_file_name = "result_file.txt"
+#
+#     with open(input_file_name, 'r') as file:
+#         lines = file.readlines()
+#
+#     with open(output_file_name, 'w') as file:
+#         file.write('MOL \t weight \t logP \t tpsa')
+#         for _ in range(iterations):
+#             random_line = random.choice(lines).strip()
+#             file.write('{} {} {} {}'.format(random_line, new_weight, new_log, new_tpsa) + '\n')
+#     time.sleep(10)
+#     return render_template("generate.html", file_exists=True)
+
+def get_val(start, stop, step, val):
+    cur = start
+    for i in range(start, stop, step):
+        if val > i:
+            break
+        cur = i
+    return cur
+
 
 @app.route('/submit_data', methods=['POST'])
 def submit_data():
-    weight = request.form['weight']
-    log = request.form['logP']
-    tpsa = request.form['tpsa']
+    weight = int(request.form['weight'])
+    log = int(request.form['logP'])
+    tpsa = int(request.form['tpsa'])
+    global w, l, t
+    w = get_val(190, 510, 10, weight)
+    l = get_val(-5, 5, 1, log)
+    t = get_val(10, 230, 10, tpsa)
 
-    new_weight = generate_close_number(float(weight))
-    new_log = generate_close_number(float(log))
-    new_tpsa = generate_close_number(float(tpsa))
-
-    iterations = random.randint(15, 30)
-
-    input_file_name = "output_molecules.txt"
-    output_file_name = "tmp/result_file.txt"
-
-    with open(input_file_name, 'r') as file:
-        lines = file.readlines()
-
-    # with open(output_file_name, 'w') as file:
-    #     file.write('MOL \t weight \t logP \t tpsa')
-    #     for _ in range(iterations):
-    #         random_line = random.choice(lines).strip()
-    #         file.write('{} {} {} {}'.format(random_line, new_weight, new_log, new_tpsa) + '\n')
-    # time.sleep(10)
-    return render_template("generate.html", file_exists=True)
+    time.sleep(5)
+    return render_template("generate.html", file_exists=True, w=w, l=l, t=t)
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
@@ -122,6 +160,15 @@ def send_email(to, subject, body, headers):
         print("Failed to send email")
         print(e)
 
+
+# @app.route("/predict", methods=["POST"])
+# def predict():
+#     weight, log, tpsa = request.form.get('content')
+#     mol_result = cv.transform([weight, log, tpsa]) # X
+#     prediction = clf.predict(mol_result)
+#     return render_template("generate.html", prediction=prediction, mol_result=mol_result)
+
 if __name__ == "__main__":
     app.run(debug=True)
+
 
