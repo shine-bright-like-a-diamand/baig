@@ -10,11 +10,6 @@ import os
 
 app = Flask(__name__)
 
-with open("models/cv.pkl", "rb") as file:
-    cv = pickle.load(file)
-with open("models/clf.pkl", "rb") as file:
-    clf = pickle.load(file)
-
 
 FILE_PATH = 'result_file.txt'
 
@@ -127,14 +122,6 @@ def send_email(to, subject, body, headers):
     except Exception as e:
         print("Failed to send email")
         print(e)
-
-
-@app.route("/predict", methods=["POST"])
-def predict():
-    weight, log, tpsa = request.form.get('content')
-    mol_result = cv.transform([weight, log, tpsa]) # X
-    prediction = clf.predict(mol_result)
-    return render_template("generate.html", prediction=prediction, mol_result=mol_result)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
