@@ -43,7 +43,7 @@ def file_exists():
 def download():
     if os.path.exists(FILE_PATH):
         return_data = send_file(FILE_PATH, as_attachment=True)
-        os.remove(FILE_PATH)
+        # os.remove(FILE_PATH)
         return return_data
     else:
         return redirect(url_for('generate'))
