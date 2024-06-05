@@ -2,7 +2,6 @@ import random
 import time
 
 from flask import Flask, render_template, request, send_file, abort, after_this_request, jsonify, flash, redirect, url_for
-import pickle
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
