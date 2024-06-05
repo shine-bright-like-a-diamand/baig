@@ -66,12 +66,12 @@ def submit_data():
     with open(input_file_name, 'r') as file:
         lines = file.readlines()
 
-    with open(output_file_name, 'w') as file:
-        file.write('MOL \t weight \t logP \t tpsa')
-        for _ in range(iterations):
-            random_line = random.choice(lines).strip()
-            file.write('{} {} {} {}'.format(random_line, new_weight, new_log, new_tpsa) + '\n')
-    time.sleep(10)
+    # with open(output_file_name, 'w') as file:
+    #     file.write('MOL \t weight \t logP \t tpsa')
+    #     for _ in range(iterations):
+    #         random_line = random.choice(lines).strip()
+    #         file.write('{} {} {} {}'.format(random_line, new_weight, new_log, new_tpsa) + '\n')
+    # time.sleep(10)
     return render_template("generate.html", file_exists=True)
 
 @app.route('/submit_form', methods=['POST'])
