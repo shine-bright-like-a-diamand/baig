@@ -93,7 +93,7 @@ def download():
 def get_val(start, stop, step, val):
     cur = start
     for i in range(start, stop, step):
-        if val > i:
+        if val < i:
             break
         cur = i
     return cur
