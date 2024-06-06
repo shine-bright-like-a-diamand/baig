@@ -49,7 +49,7 @@ def file_exists():
     return jsonify(exists=os.path.exists(FILE_PATH))
 
 
-@app.route('/download')
+@app.route('/download', methods=['GET'])
 def download():
     global w
     print(w)
