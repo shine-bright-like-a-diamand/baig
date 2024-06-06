@@ -60,6 +60,9 @@ def download():
         w = 0
         # os.remove(FILE_PATH)
         return return_data
+    elif w > 0:
+        file = "tmp/result_file_190_-5_100.txt"
+        send_file(file, as_attachment=True, download_name='result.txt')
     else:
         w = 0
         return redirect(url_for('generate'))
